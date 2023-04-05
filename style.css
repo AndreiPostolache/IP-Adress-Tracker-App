@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: 'Rubik', sans-serif;
+}
+
+#map {
+  height: 40rem;
+  background-color: grey;
+  z-index: -1;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  background-image: url(./images/pattern-bg-desktop.png);
+  background-repeat: no-repeat;
+}
+
+#form {
+  width: 20rem;
+}
+
+#button {
+  background-color: black;
+}
+
+.arrow-icon {
+  transform: rotate(90deg);
+  filter: brightness(0) saturate(100%) invert(99%) sepia(0%) saturate(7473%)
+    hue-rotate(289deg) brightness(121%) contrast(98%);
+}
+
+.details__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: white;
+  position: absolute;
+  left: 30rem;
+  top: 2rem;
+  width: 60rem;
+  height: 10rem;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.details__container--title {
+  margin-top: 2rem;
+  color: hsl(0, 0%, 59%);
+  font-weight: 500;
+}
+
+
+.details__cotainer--description{
+  color: hsl(0, 0%, 17%);
+  font-weight: 700;
+  font-size: 18px;
+} 
+
+.input__container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
