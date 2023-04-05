@@ -18,37 +18,39 @@ window.addEventListener("DOMContentLoaded", async function () {
 
 // Update the marker position on the map based on IP address
 const ipLocation = async function (ip) {
-  const ipFetch = await fetch(
-    `https://geo.ipify.org/api/v2/country,city?apiKey=at_vEZDW3vA9DHLmL40DKG34AFv71M1I&ipAddress=${ip}`
-  );
-  const dataFetch = await ipFetch.json();
-  console.log(dataFetch);
-  const { lat: latitude, lng: longitude } = dataFetch.location;
-  console.log(latitude, longitude);
+  try {
+    const ipFetch = await fetch(
+      `https://geo.ipify.org/api/v2/country,city?apiKey=at_vEZDW3vA9DHLmL40DKG34AFv71M1I&ipAddress=${ip}`
+    );
+    const dataFetch = await ipFetch.json();
+    const { lat: latitude, lng: longitude } = dataFetch.location;
 
-  ipValue.textContent = dataFetch.ip;
-  userLocation.textContent = `${dataFetch.location.city}, ${dataFetch.location.country}`;
-  userTimezone.textContent = dataFetch.location.timezone;
-  userIsp.textContent = dataFetch.isp;
+    ipValue.textContent = dataFetch.ip;
+    userLocation.textContent = `${dataFetch.location.city}, ${dataFetch.location.country}`;
+    userTimezone.textContent = dataFetch.location.timezone;
+    userIsp.textContent = dataFetch.isp;
 
-  // Update marker icon image
-  const myIcon = L.icon({
-    iconUrl: "./images/icon-location.svg",
-    iconSize: [30, 40],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76],
+    // Update marker icon image
+    const myIcon = L.icon({
+      iconUrl: "./images/icon-location.svg",
+      iconSize: [30, 40],
+      iconAnchor: [22, 94],
+      popupAnchor: [-3, -76],
     });
 
-  // Update marker position
-  if (marker) {
-    marker.setLatLng([latitude, longitude]);
-  } else {
-    // Create new marker and add it to the map
-    marker = L.marker([latitude, longitude], { icon: myIcon }).addTo(map);
-  }
+    // Update marker position
+    if (marker) {
+      marker.setLatLng([latitude, longitude]);
+    } else {
+      // Create new marker and add it to the map
+      marker = L.marker([latitude, longitude], { icon: myIcon }).addTo(map);
+    }
 
-  // Pan the map to the new marker position
-  map.panTo([latitude, longitude]);
+    // Pan the map to the new marker position
+    map.panTo([latitude, longitude]);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 // Initialize the map and add the tile layer

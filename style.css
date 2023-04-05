@@ -10,7 +10,7 @@ body {
 
 #map {
   height: 40rem;
-  background-color: grey;
+
   z-index: -1;
 }
 
