@@ -81,8 +81,64 @@ body {
   font-weight: 700;
 }
 
+.ipadress,
+.location,
+.timezone {
+  position: relative;
+}
+
+.ipadress::after,
+.location::after,
+.timezone::after {
+  content: "";
+  margin: 1rem 0;
+  color: inherit;
+  border: 0;
+  border-top: var(--bs-border-width) solid;
+  opacity: 0.25;
+  position: absolute;
+  width: 4rem;
+  transform: rotate(90deg);
+  top: 3.7rem;
+  left: 8rem;
+}
+
 @media only screen and (max-width: 1440px) {
   .details__container {
     left: 15rem;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  #form {
+    width: 15rem;
+  }
+
+  .details__container {
+    display: flex;
+    flex-direction: column;
+    top: 10rem;
+    width: 21rem;
+    height: 20rem;
+    justify-content: center;
+    left: 1rem;
+  }
+
+  .ipadress::after,
+  .location::after,
+  .timezone::after {
+    display: none;
+  }
+
+  .details__container--title {
+    margin-top: 0;
+  }
+
+  .details__container div > p {
+    margin-bottom: 0.5rem;
+  }
+
+  .input__container {
+    margin-bottom: 8rem;
   }
 }
