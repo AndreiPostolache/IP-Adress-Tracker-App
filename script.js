@@ -31,12 +31,20 @@ const ipLocation = async function (ip) {
   userTimezone.textContent = dataFetch.location.timezone;
   userIsp.textContent = dataFetch.isp;
 
+  // Update marker icon image
+  const myIcon = L.icon({
+    iconUrl: "./images/icon-location.svg",
+    iconSize: [30, 40],
+    iconAnchor: [22, 94],
+    popupAnchor: [-3, -76],
+    });
+
   // Update marker position
   if (marker) {
     marker.setLatLng([latitude, longitude]);
   } else {
     // Create new marker and add it to the map
-    marker = L.marker([latitude, longitude]).addTo(map);
+    marker = L.marker([latitude, longitude], { icon: myIcon }).addTo(map);
   }
 
   // Pan the map to the new marker position
@@ -44,7 +52,7 @@ const ipLocation = async function (ip) {
 };
 
 // Initialize the map and add the tile layer
-map = L.map("map").setView([0, 0], 13);
+map = L.map("map").setView([0, 0], 15);
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 19,
   attribution:
