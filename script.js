@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", async function () {
 const ipLocation = async function (ip) {
   try {
     const ipFetch = await fetch(
-      `https://geo.ipify.org/api/v2/country,city?apiKey=at_vEZDW3vA9DHLmL40DKG34AFv71M1I&ipAddress=${ip}`
+      `https://geo.ipify.org/api/v2/country,city?apiKey={apiKey}&ipAddress=${ip}`
     );
     const dataFetch = await ipFetch.json();
     const { lat: latitude, lng: longitude } = dataFetch.location;
